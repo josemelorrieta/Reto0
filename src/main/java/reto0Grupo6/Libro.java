@@ -29,9 +29,6 @@ public class Libro {
 		this.materias = materias;
 	}
 
-
-
-
 	public String getAutor() {
 		return autor;
 	}

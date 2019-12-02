@@ -208,9 +208,13 @@ public class LeerFicheros {
 		}
 		
 		fileChooser.setFileFilter(filter);
+		fileChooser.setCurrentDirectory(new File("."));
 		fileChooser.showDialog(null, "Abrir");
 		
-		return fileChooser.getSelectedFile();
+		if (fileChooser.getSelectedFile() != null)
+			return fileChooser.getSelectedFile();
+		else
+			return null;
 	}
 
 }
