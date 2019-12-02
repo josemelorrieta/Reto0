@@ -1,0 +1,9 @@
+Autor: autor1
+Título: titulo1
+Editorial: editorial1
+Páginas: 300
+Altura: 23.0
+Notas: muy bueno
+ISBN: 3434545
+Materias: novela
+
