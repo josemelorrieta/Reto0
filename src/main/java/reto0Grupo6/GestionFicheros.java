@@ -137,6 +137,7 @@ public class GestionFicheros {
 			System.out.println("El tamaño introducido es: " + tamanio);
 			
 			
+			
 			//Editar propietario
 			
 			//Editar permisos
