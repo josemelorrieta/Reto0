@@ -25,79 +25,69 @@ public class LeerFicheros {
 		String dato = "";
 		String valor = "";
 		Libro libro = null;
+		BufferedReader br = null;
 		if (fichero != null) {
 			try {
-				BufferedReader br;
-				try {
-					br = new BufferedReader(new InputStreamReader(new FileInputStream(fichero.getPath()), "UTF-8"));
+			
+				br = new BufferedReader(new InputStreamReader(new FileInputStream(fichero.getPath()), "UTF-8"));
 					
-					try {
-						while ((linea = br.readLine()) != null) {
-							if (!linea.equals("")) {
-								StringTokenizer st = new StringTokenizer(linea, ":");
-								while (st.hasMoreTokens()) {
-									dato = st.nextToken();
-									if (st.hasMoreTokens())
-										valor = st.nextToken().substring(1);
-									else 
-										valor = "";
-									switch (dato) {
-										case "Autor":
-											libro = new Libro();
-											libro.setAutor(valor);
-											break;
-										case "Título":
-											libro.setTitulo(valor);
-											break;
-										case "Editorial":
-											libro.setEditorial(valor);
-											break;
-										case "Páginas":
-											if (!valor.contentEquals(""))
-												libro.setPaginas(Integer.parseInt(valor.replaceAll("\\s+", "")));
-											break;
-										case "Altura":
-											if (!valor.contentEquals(""))
-												libro.setAltura(Integer.parseInt(valor.replaceAll("\\s+", "")));
-											break;
-										case "Notas":
-											libro.setNotas(valor);
-											break;
-										case "ISBN":
-											libro.setIsbn(valor);
-											break;
-										case "Materias":
-											libro.setMaterias(valor);
-											libros.add(libro);
-											break;
-									}
-									
-								}
+				while ((linea = br.readLine()) != null) {
+					if (!linea.equals("")) {
+						StringTokenizer st = new StringTokenizer(linea, ":");
+						while (st.hasMoreTokens()) {
+							dato = st.nextToken();
+							if (st.hasMoreTokens())
+								valor = st.nextToken().substring(1);
+							else 
+								valor = "";
+							switch (dato) {
+								case "Autor":
+									libro = new Libro();
+									libro.setAutor(valor);
+									break;
+								case "Título":
+									libro.setTitulo(valor);
+									break;
+								case "Editorial":
+									libro.setEditorial(valor);
+									break;
+								case "Páginas":
+									if (!valor.contentEquals(""))
+										libro.setPaginas(Integer.parseInt(valor.replaceAll("\\s+", "")));
+									break;
+								case "Altura":
+									if (!valor.contentEquals(""))
+										libro.setAltura(Integer.parseInt(valor.replaceAll("\\s+", "")));
+									break;
+								case "Notas":
+									libro.setNotas(valor);
+									break;
+								case "ISBN":
+									libro.setIsbn(valor);
+									break;
+								case "Materias":
+									libro.setMaterias(valor);
+									libros.add(libro);
+									break;
 							}
 						}
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
-					
-					try {
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (br != null) {
 						br.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
-				} catch (UnsupportedEncodingException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 				
-				
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+		} else {
+			System.out.println("Error al abrir el fichero");
 		}
-		
 		return libros;
 	}
 
@@ -110,22 +100,12 @@ public class LeerFicheros {
 			BufferedReader bufferLectura = null;
 			try {
 				// Abrir el .csv en buffer de lectura
-				try {
-					bufferLectura = new BufferedReader(new InputStreamReader(new FileInputStream(fichero.getPath()), "UTF-8"));
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	
+				bufferLectura = new BufferedReader(new InputStreamReader(new FileInputStream(fichero.getPath()), "UTF-8"));
+					
 				// Leer una linea del archivo
 				String linea = null;
-				try {
-					linea = bufferLectura.readLine();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	
+				linea = bufferLectura.readLine();
+					
 				while (linea != null) {
 					// Sepapar la linea leida con el separador definido previamente
 					String[] campos = linea.split(SEPARADOR, -1); // opción -1 para que siempre sea un array de 8 aunque los últimos campos estén vacíos
@@ -149,14 +129,9 @@ public class LeerFicheros {
 						libros.add(libro);
 					}
 					// Volver a leer otra línea del fichero
-					try {
-						linea = bufferLectura.readLine();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					linea = bufferLectura.readLine();
 				}
-			} catch (FileNotFoundException fnE) {
+			} catch (IOException fnE) {
 				System.out.println("Asegúrese de que la ruta de acceso al fichero .csv exista y sea correcta.");
 			} finally {
 				// Cierro el buffer de lectura
@@ -168,6 +143,8 @@ public class LeerFicheros {
 					}
 				}
 			}
+		} else {
+			System.out.println("Asegúrese de que la ruta de acceso al fichero .csv exista y sea correcta.");
 		}
 		return libros;
 	}

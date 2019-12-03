@@ -12,29 +12,29 @@ public class TestFuncionesMain {
 	
 	private FuncionesMain funciones = new FuncionesMain();
 	
-	@Test
-	public void mostrarMenuTest() {
-		String mensajeMenuEsperado = "\t Menu Principal" + "\n" + 
-				"1.- Cargar datos libros"+ "\n" + 
-				"2.- Mostrar catálogo"+ "\n" + 
-				"3.- Búsqueda de un libro (por autor)" + "\n" + 
-				"4.- Mostrar catálogo (.TXT)" + "\n" + 
-				"5.- Mostrar catálogo (.CSV)"+ "\n" + 
-				"6.- Mostrar catálogo (.XML)"+ "\n" + 
-				"0.- Fin";
-		String mensajeMenuObervado = funciones.mostrarMenu();
-		
-		assertEquals(mensajeMenuEsperado, mensajeMenuObervado);
-	}
-	
-	@Test
-	public void mostrarMenuTestMal() {
-		String mensajeMenuEsperado = "fdthftrghfghghgh";
-		String mensajeMenuObervado = funciones.mostrarMenu();
-		
-		assertNotEquals(mensajeMenuEsperado, mensajeMenuObervado);
-	}
-	
+//	@Test
+//	public void mostrarMenuTest() {
+//		String mensajeMenuEsperado = "\t Menu Principal" + "\n" + 
+//				"1.- Cargar datos libros"+ "\n" + 
+//				"2.- Mostrar catálogo"+ "\n" + 
+//				"3.- Búsqueda de un libro (por autor)" + "\n" + 
+//				"4.- Mostrar catálogo (.TXT)" + "\n" + 
+//				"5.- Mostrar catálogo (.CSV)"+ "\n" + 
+//				"6.- Mostrar catálogo (.XML)"+ "\n" + 
+//				"0.- Fin";
+//		String mensajeMenuObervado = funciones.mostrarMenu();
+//		
+//		assertEquals(mensajeMenuEsperado, mensajeMenuObervado);
+//	}
+//	
+//	@Test
+//	public void mostrarMenuTestMal() {
+//		String mensajeMenuEsperado = "fdthftrghfghghgh";
+//		String mensajeMenuObervado = funciones.mostrarMenu();
+//		
+//		assertNotEquals(mensajeMenuEsperado, mensajeMenuObervado);
+//	}
+//	
 	@Test
 	public void cargarDatosTest() {
 		LeerDatos datosMock = mock(LeerDatos.class);

@@ -12,12 +12,12 @@ import org.junit.Test;
 public class LeerDatosTest {
 
 	String resultado = null;
-	int resultadoInt;
 	
 	@Test
 	public void testintroducirTexto() {
 		LeerDatos leerDatos = new LeerDatos();
-		
+
+		int resultadoInt;
 		String texto = "Introduzca un autor";
 		String input = "Autor";
 	    InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -29,20 +29,140 @@ public class LeerDatosTest {
 	    assertEquals("Autor", resultado);
 	}
 	
-/*
+
 	@Test
 	public void testRecogerOpcionInt() {
 		LeerDatos leerDatos = new LeerDatos();
-		
+
+		int resultadoInt;
 		String texto = "Introduzca un número";
 		int valorMin = 0;
 		int valorMax = 10;
-		String input = "5";
+		String input = "5 \n";
 		InputStream in = new ByteArrayInputStream(input.getBytes());
 		System.setIn(in);
 	    Scanner reader = new Scanner(System.in); 
-	    resultadoInt = leerDatos.RecogerOpcionInt(reader, 0,10,texto);
-	    assertEquals(5, resultadoInt);	
+	    resultadoInt = leerDatos.RecogerOpcionInt(reader, valorMin, valorMax,texto);
+	    assertEquals(5, resultadoInt);
+	
+	}
+	
+	@Test
+	public void testRecogerOpcionInt2() {
+		LeerDatos leerDatos = new LeerDatos();
+
+		int resultadoInt;
+		String texto = "Introduzca un número";
+		int valorMin = 0;
+		int valorMax = 10;
+		String input = "15 4 \n";
+		InputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+	    Scanner reader = new Scanner(System.in); 
+	    resultadoInt = leerDatos.RecogerOpcionInt(reader, valorMin, valorMax,texto);
+	    assertEquals(4, resultadoInt);
+	
+	}
+	
+	@Test
+	public void testRecogerOpcionInt3() {
+		LeerDatos leerDatos = new LeerDatos();
+
+		int resultadoInt;
+		String texto = "Introduzca un número";
+		int valorMin = 0;
+		int valorMax = 10;
+		String input = "-1 4 \n";
+		InputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+	    Scanner reader = new Scanner(System.in); 
+	    resultadoInt = leerDatos.RecogerOpcionInt(reader, valorMin, valorMax,texto);
+	    assertEquals(4, resultadoInt);
+	
+	}
+	
+	@Test
+	public void testRecogerOpcionInt4() {
+		LeerDatos leerDatos = new LeerDatos();
+
+		int resultadoInt;
+		String texto = "Introduzca un número";
+		int valorMin = 0;
+		int valorMax = 10;
+		String input = "a \n 4 \n";
+		InputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+	    Scanner reader = new Scanner(System.in); 
+	    resultadoInt = leerDatos.RecogerOpcionInt(reader, valorMin, valorMax,texto);
+	    assertEquals(4, resultadoInt);
+	
+	}
+	
+	@Test
+	public void testRecogerOpcionFloat() {
+		LeerDatos leerDatos = new LeerDatos();
+
+		float resultadoFloat;
+		String texto = "Introduzca un número";
+		float valorMin = 0f;
+		float valorMax = 10f;
+		String input = "5 \n";
+		InputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+	    Scanner reader = new Scanner(System.in); 
+	    resultadoFloat = leerDatos.RecogerOpcionFloat(reader, valorMin, valorMax,texto);
+	    assertEquals(5, resultadoFloat, 0.0);
+	
+	}
+	
+	@Test
+	public void testRecogerOpcionFloat2() {
+		LeerDatos leerDatos = new LeerDatos();
+
+		float resultadoFloat;
+		String texto = "Introduzca un número";
+		float valorMin = 0f;
+		float valorMax = 10f;
+		String input = "15 \n 4 \n";
+		InputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+	    Scanner reader = new Scanner(System.in); 
+	    resultadoFloat = leerDatos.RecogerOpcionFloat(reader, valorMin, valorMax,texto);
+	    assertEquals(4, resultadoFloat, 0.0);
+	
+	}
+	
+	@Test
+	public void testRecogerOpcionFloat3() {
+		LeerDatos leerDatos = new LeerDatos();
+
+		float resultadoFloat;
+		String texto = "Introduzca un número";
+		float valorMin = 0f;
+		float valorMax = 10f;
+		String input = "-1 \n 4 \n";
+		InputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+	    Scanner reader = new Scanner(System.in); 
+	    resultadoFloat = leerDatos.RecogerOpcionFloat(reader, valorMin, valorMax,texto);
+	    assertEquals(4, resultadoFloat, 0.0);
+	
+	}
+	
+	@Test
+	public void testRecogerOpcionFloat4() {
+		LeerDatos leerDatos = new LeerDatos();
+
+		float resultadoFloat;
+		String texto = "Introduzca un número";
+		float valorMin = 0f;
+		float valorMax = 10f;
+		String input = "a \n 4 \n";
+		InputStream in = new ByteArrayInputStream(input.getBytes());
+		System.setIn(in);
+	    Scanner reader = new Scanner(System.in); 
+	    resultadoFloat = leerDatos.RecogerOpcionFloat(reader, valorMin, valorMax,texto);
+	    assertEquals(4, resultadoFloat, 0.0);
 	
 	}
 	
@@ -50,7 +170,7 @@ public class LeerDatosTest {
 	    public void testInputReader() {
 		 	LeerDatos leerDatos = new LeerDatos();
 		 
-		 	String texto = "Introduzca un n�mero";
+		 	String texto = "Introduzca un número";
 			int valorMin = 0;
 			int valorMax = 10;
 			String input = "5";
@@ -71,28 +191,6 @@ public class LeerDatosTest {
 	        assertNotEquals(3, leerDatos.RecogerOpcionInt(reader, 0,10,texto));
 
 	    }
-	
-  @Test
-	public void shouldTakeUserInput() {
-	  String texto = "Introduzca un n�mero";
-	  String input = "5";
-	  InputStream in = new ByteArrayInputStream(input.getBytes());
-      System.setIn(in);
-      Scanner reader = new Scanner(System.in);
-	  
-	    //create a mock scanner
-	    Scanner mockScanner = mock(Scanner.class);
-	    //set up the scanner
-	    when(mockScanner.nextLine()).thenReturn("add 5");
 
-	    LeerDatos leerDatos = new LeerDatos();
-	    //assert output
-        assertNotEquals(3, leerDatos.RecogerOpcionInt(reader, 0,10,texto));
-
-	   //added bonus - you can verify that your scanner's nextline() method is
-	   //actually called See Mockito.verify
-	   //verify(mockScanner).nextLine();
-	}
-*/
 
 }

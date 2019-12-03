@@ -7,7 +7,7 @@ public class FuncionesMain {
 	LeerFicheros leerFicheros = new LeerFicheros();
 	EscribirFicheros escribirFicheros = new EscribirFicheros();
 	 
-	public void MostrarDatosLibro(ArrayList<Libro> libros,Scanner reader) {
+	public void MostrarDatosLibro(ArrayList<Libro> libros, Scanner reader) {
 		// Declaracion e inicializacion de variables
 		String autor = "";
 		boolean encontrado = false;
@@ -81,30 +81,21 @@ public class FuncionesMain {
 		return libros;
 	}
 	
-	public ArrayList<Libro> menuExportar(ArrayList<Libro> libros, Scanner reader, LeerDatos leerDatos) {
+	public void menuExportar(ArrayList<Libro> libros, Scanner reader, LeerDatos leerDatos) {
 		int opcion = -1;
 		String mensajeMenu = "";
 		
 		while (opcion !=0)
 		{
 			switch (opcion) {
-				case 1: if(libros.size() != 0) {
-						escribirFicheros.escribirTxt(libros);
-					} else {
-						System.out.println("No hay libros en el catálogo");
-					}
+				case 1: 
+					escribirFicheros.escribirTxt(libros);
 					break;
-				case 2: if(libros.size() != 0) {
-						escribirFicheros.escribirCsv(libros);
-					} else {
-						System.out.println("No hay libros en el catálogo");
-					}
+				case 2:
+					escribirFicheros.escribirCsv(libros);
 					break;
-				case 3: if(libros.size() != 0) {
-						escribirFicheros.escribirXml(libros);
-					} else {
-						System.out.println("No hay libros en el catálogo");
-					}
+				case 3:
+					escribirFicheros.escribirXml(libros);
 					break;
 			}
 			
@@ -112,7 +103,6 @@ public class FuncionesMain {
 			System.out.println(mensajeMenu);
 			opcion = leerDatos.RecogerOpcionInt(reader,0,3, "Introduce una opción: ");
 		}
-		return libros;
 	}
 	
 	public void menuFicheros(Scanner reader, LeerDatos leerDatos) {

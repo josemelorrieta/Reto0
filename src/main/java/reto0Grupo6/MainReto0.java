@@ -44,7 +44,12 @@ public class MainReto0 {
 					break;
 				case 4: libros = funciones.menuImportar(libros, reader, leerDatos); 
 					break;
-				case 5: libros = funciones.menuExportar(libros, reader, leerDatos);
+				case 5: 
+					if(libros.size() != 0) {
+						funciones.menuExportar(libros, reader, leerDatos);
+					} else {
+						System.out.println("El catálogo está vacío");
+					}
 					break;
 				case 6: funciones.menuFicheros(reader, leerDatos);
 					break;
